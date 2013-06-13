@@ -1,0 +1,38 @@
+<H1>Welcome <%= @user.name.capitalize %> </h1>
+<h2>Here are all available newspaper subcriptions</h2>
+
+<form action="<%= user_url(@user) %>" method="post">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<input type="hidden" name="_method" value="put">
+	
+	<ul>
+		<% @newspapers.each_with_index do |newspaper, ii| %>
+			<li><strong><%= newspaper.title %></strong></li>
+			<br>
+			<% plans = newspaper.subscription_plans %>
+			<% unless plans.empty? %>
+				Subscription plans:
+				<% plans.each do |sub_plan| %>
+					<%= render :partial => "subscription_plans/subscription", :object => sub_plan %>
+					<%# unless @user.subscribed?(sub_plan.id) %>
+						<label for="user_subscription_plan_ids_<%= ii %>">Subscribe</label>
+						<input type="checkbox"
+						 id="user_subscription_plan_ids_<%= ii %>"
+						 name="user[subscription_plan_ids][]" 
+						 value="<%= sub_plan.id %>" 
+						 <%= "checked" if @user.subscribed?(sub_plan.id) %>
+						 />
+						 <br>
+						 <br>
+					<%# else %>
+					<!-- code for unsubscribe  -->
+						 
+					<%# end %>
+				<% end %>
+			<% end %>
+		<% end %>
+	</ul>
+
+
+	<input type="submit" value="Subscribe!">
+</form>

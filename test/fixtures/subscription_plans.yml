@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  newspaper_id: 1
+  price: 1
+  type: false
+
+two:
+  newspaper_id: 1
+  price: 1
+  type: false

@@ -1,0 +1,21 @@
+<%# if @subscription %>
+<table>
+	<tr>
+		<th>ID</th>
+		<th>Newspaper</th>
+		<th>Price</th>
+		<th>Type</th>
+	</tr>
+	<tr>
+		<td><%= subscription.id %></td>
+		<td><%= subscription.newspaper.title %></td>
+		<td><%= subscription.price %></td>
+		<% if subscription.subscription_type %>
+		<td>Daily</td>
+		<% else %>
+		<td>Weekly</td>
+		<% end %>
+			
+	</tr>
+</table>
+<%# end %>

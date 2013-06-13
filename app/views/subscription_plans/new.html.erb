@@ -1,0 +1,16 @@
+<h1>Create New Subscription Plan</h1>
+<form action="<%= subscription_plans_url %>" method="post">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<label for="subscription_newspaper_id">Newspaper</label>
+	<select id="subscription_newspaper_id" name="subscription[newspaper_id]">
+		<option name="subscription[newspaper_id]"></option>
+		<% @newspapers.each do |newspaper| %>
+		<option value="<%= newspaper.id %>">
+			<%= newspaper.title %>
+		</option>
+		<% end %>
+	</select>
+	<%= render :partial => "new_sub_plan" %>
+	
+	<p><input type="submit" value="Create New Subscription Plan"></p>
+</form>

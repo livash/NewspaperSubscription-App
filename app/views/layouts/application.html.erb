@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NewspaperClone</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if @user %>
+	<%= link_to "Sign Out", session_url, :method => :delete %>
+<% else %>
+	<%= link_to "Sign In", new_session_url, :method => :get %>
+<% end %>
+<br>
+<br>
+<%= yield %>
+<br>
+<br>
+<%= link_to "See all newspapers", newspapers_url, :method => :get %>
+<br>
+<br>
+<%= link_to "Create new Newspaper", new_newspaper_url, :method => :get %>
+<br>
+<br>
+<%= link_to "Create New Subscription Plan", new_subscription_plan_url, :method => :get %>
+</body>
+</html>

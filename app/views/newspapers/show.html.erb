@@ -1,0 +1,8 @@
+<h1>Information about <%= @newspaper.title %></h1>
+<p>Editor: <%= @newspaper.editor.name %></p>
+<strong>Available Subscription Plans:</strong>
+<br>
+<br>
+<% subs = @newspaper.subscription_plans %>
+
+<%= render :partial => "subscription_plans/subscription", :collection => subs %>

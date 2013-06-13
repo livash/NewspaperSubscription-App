@@ -1,0 +1,16 @@
+<%= link_to "Sign Up", new_user_url, :method => :get %>
+<br>
+<h1>Welcome</h1>
+<form action="<%= session_url %>" method="post">
+	<label for="user_username">Username</label>
+	<input type="text" 
+		id="user_username" 
+		name="user[username]" 
+		value="<%= @user.username %>">
+	<br>
+	<label for="user_password">Password</label>
+	<input type="password"
+		id="user_password"
+	 	name="user[password]">
+	<p><input type="submit" value="Sign In"></p>
+</form>

@@ -1,0 +1,13 @@
+<h1>List of all newspapers</h1>
+<ul>
+<% @newspapers.each do |newspaper| %>
+	<li><strong><%= newspaper.title %></strong></li>
+	<%= button_to "Delete newspaper", newspaper_url(newspaper), :method => :delete, :confirm => "Are your sure?" %>
+	<br>
+	<% plans = newspaper.subscription_plans %>
+	<% unless plans.empty? %>
+		Subscription plans:
+		<%= render :partial => "subscription_plans/subscription", :collection => plans %>
+	<% end %>
+<% end %>
+</ul>
