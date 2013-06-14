@@ -1,5 +1,5 @@
 class SubscriptionPlansController < ApplicationController
-
+  before_filter :verify_user
   def new
     @user = current_user
     @newspapers = Newspaper.all

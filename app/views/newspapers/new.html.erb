@@ -1,5 +1,6 @@
 <h1>New Newspaper</h1>
 <form action="<%= newspapers_url %>" method="post">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 	<label for="newspaper_title">Title</label>
 	<input type="text" id="newspaper_title" name="newspaper[title]" value="<%= @newspaper.title %>">
 	<br>

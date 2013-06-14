@@ -18,6 +18,8 @@ class NewspapersController < ApplicationController
     if @newspaper.save
       redirect_to newspaper_url(@newspaper)
     else
+      (flash[:notices] ||= []) << "Creation of new Newspaper failed"
+      @users = User.all
       render :new
     end
   end

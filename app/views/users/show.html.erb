@@ -11,24 +11,17 @@
 			<br>
 			<% plans = newspaper.subscription_plans %>
 			<% unless plans.empty? %>
-				Subscription plans:
+				<label for="user_subscription_plan_ids">Subscription plans:</label>
+				<select id="user_subscription_plan_ids">
+					<option >Choose plan here</option>
 				<% plans.each do |sub_plan| %>
-					<%= render :partial => "subscription_plans/subscription", :object => sub_plan %>
-					<%# unless @user.subscribed?(sub_plan.id) %>
-						<label for="user_subscription_plan_ids_<%= ii %>">Subscribe</label>
-						<input type="checkbox"
-						 id="user_subscription_plan_ids_<%= ii %>"
-						 name="user[subscription_plan_ids][]" 
-						 value="<%= sub_plan.id %>" 
-						 <%= "checked" if @user.subscribed?(sub_plan.id) %>
-						 />
-						 <br>
-						 <br>
-					<%# else %>
-					<!-- code for unsubscribe  -->
-						 
-					<%# end %>
+				<option name="user[:subscription_plan_ids][]" 
+					value="<%= sub_plan.id %>">
+					price: $<%= sub_plan.price %>, <%= sub_plan.option %>
+				</option>
+						
 				<% end %>
+			</select>
 			<% end %>
 		<% end %>
 	</ul>

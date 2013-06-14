@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
- # before_filter :verify_user
+ before_filter :verify_user, :except => [:new, :create]
 
   
   def new
@@ -26,9 +26,14 @@ class UsersController < ApplicationController
   def update
     puts params
     @user = User.find(params[:id])
-    @user.update_attributes(params[:user])
-    @newspapers = Newspaper.all
-    render :show
+    if @user.update_attributes(params[:user])
+      @newspapers = Newspaper.all
+      render :show
+    else
+      flash[:message] = "Your subscription failed. Try again."
+      @newspapers = Newspaper.all
+      render :show
+    end
   end
 
 end

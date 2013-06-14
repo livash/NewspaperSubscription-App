@@ -11,5 +11,8 @@ class SubscriptionPlan < ActiveRecord::Base
   :through => :subscriptions,
   :source => :user
   
+  def option
+    self.subscription_type ? "daily" : "weekly"
+  end
    
 end
